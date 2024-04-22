@@ -194,6 +194,27 @@
     -name => varchar(100)
     -value => text
 
+## Cài đặt Laravel Module và Repository
+
+    ### Cài đặt Laravel Module
+    -copy code phần modules đã học vào: 1 folder User và 1 file ModuleServiceProvider
+    -copy phần autoload nữa, ném vào composer.json
+    -Khai báo ModuleServiceProvider trong config->app.php->providers
+    -copy tiếp file Module trong phần Command cũ, để tạo câu lệnh artisan tự tạo Module
+
+    ### Cài đặt Repository
+
+## Tích hợp layout Admin
+
+## Xây dựng Module quản lý Users
+
+    ### Tạo Migrations - Seeder - Chuẩn bị giao diện
+    ### Tạo Repository và các phương thức cần thiết
+    -Hiển thị danh sách User (có phân trang)
+    -Thêm user
+    -Xóa user
+    -Lấy thông tin user
+
 
 
 
