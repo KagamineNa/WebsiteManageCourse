@@ -21,7 +21,8 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $id = $this->route('user');
+        $rules = [
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
@@ -35,6 +36,16 @@ class UserRequest extends FormRequest
                 }
             ],
         ];
+
+        if ($id) {
+            $rules['email'] = 'required|email|unique:users,email,' . $id;
+            if ($this->password) {
+                $rules['password'] = 'min:6';
+            } else {
+                unset($rules['password']);
+            }
+        }
+        return $rules;
     }
 
     public function messages(): array
@@ -46,6 +57,7 @@ class UserRequest extends FormRequest
             'email' => ':attribute không đúng định dạng',
             'integer' => ':attribute phải là số nguyên',
             'unique' => ':attribute đã tồn tại',
+            'choose' => 'Vui lòng chọn :attribute',
         ];
     }
 

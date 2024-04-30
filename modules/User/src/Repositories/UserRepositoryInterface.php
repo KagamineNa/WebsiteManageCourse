@@ -10,6 +10,8 @@ interface UserRepositoryInterface extends RepositoryInterface
 
     public function getUsers($limit);
 
+    public function getAllUsers();
+
     public function setPassword($password, $id);
 
     public function checkPassword($password, $id);

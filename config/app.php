@@ -171,6 +171,9 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         ModuleServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+
     ])->toArray(),
 
     /*

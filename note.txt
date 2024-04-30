@@ -214,6 +214,9 @@
     -Thêm user
     -Xóa user
     -Lấy thông tin user
+    ### Tạo FormRequest và các phương thức Validation
+    ### Viết chức năng thêm user
+    ### Viết chức năng hiển thị user
 
 
 
