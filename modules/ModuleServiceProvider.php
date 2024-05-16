@@ -11,6 +11,11 @@ use Modules\Courses\src\Repositories\CoursesRepository;
 use Modules\Courses\src\Repositories\CoursesRepositoryInterface;
 use Modules\Teacher\src\Repositories\TeacherRepository;
 use Modules\Teacher\src\Repositories\TeacherRepositoryInterface;
+use Modules\Home\src\Repositories\HomeRepository;
+use Modules\Home\src\Repositories\HomeRepositoryInterface;
+use Modules\Lessons\src\Repositories\LessonsRepository;
+use Modules\Lessons\src\Repositories\LessonsRepositoryInterface;
+use Illuminate\Support\Facades\Route;
 
 
 class ModuleServiceProvider extends ServiceProvider
@@ -50,6 +55,8 @@ class ModuleServiceProvider extends ServiceProvider
             CategoriesRepositoryInterface::class => CategoriesRepository::class,
             CoursesRepositoryInterface::class => CoursesRepository::class,
             TeacherRepositoryInterface::class => TeacherRepository::class,
+            HomeRepositoryInterface::class => HomeRepository::class,
+            LessonsRepositoryInterface::class => LessonsRepository::class,
             // Thêm các cặp interface và class khác vào đây
         ];
 
@@ -84,9 +91,18 @@ class ModuleServiceProvider extends ServiceProvider
         $modulePath = __DIR__ . "/{$module}";
 
         //Khai báo Routes
-        if (File::exists($modulePath . '/routes/routes.php')) {
-            $this->loadRoutesFrom($modulePath . '/routes/routes.php');
-        }
+
+        Route::group(['namespace' => "Modules\\{$module}\src\Http\Controllers", 'middleware' => 'web'], function () use ($modulePath) {
+            if (File::exists($modulePath . '/routes/web.php')) {
+                $this->loadRoutesFrom($modulePath . '/routes/web.php');
+            }
+        });
+
+        Route::group(['namespace' => "Modules\\{$module}\src\Http\Controllers", 'middleware' => 'api', 'prefix' => 'api'], function () use ($modulePath) {
+            if (File::exists($modulePath . '/routes/api.php')) {
+                $this->loadRoutesFrom($modulePath . '/routes/api.php');
+            }
+        });
 
         //Khai báo Migrations
         if (File::exists($modulePath . '/migrations')) {

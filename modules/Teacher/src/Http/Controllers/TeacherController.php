@@ -89,10 +89,10 @@ class TeacherController extends Controller
         $teacher = $this->teacherRepository->find($id);
 
         $status = $this->teacherRepository->delete($id);
-        // if ($status) {
-        //     $image = $teacher->image;
-        //     deleteFileStorage($image);
-        // }
+        if ($status) {
+            $image = $teacher->image;
+            deleteFileStorage($image);
+        }
         return back()->with('msg', 'Xóa giảng viên thành công');
     }
 }

@@ -1,4 +1,4 @@
-@extends('layout.backend')
+@extends('layouts.backend')
 @section('content')
     <form action="" method="post">
         @csrf
@@ -33,7 +33,12 @@
                     <select name="teacher_id" id="teacher_id"
                         class="form-select {{ $errors->has('teacher_id') ? 'is-invalid' : '' }}">
                         <option value="0">Chọn giảng viên</option>
-                        <option value="1">Tạ Hoàng An</option>
+                        @if ($teacher)
+                            @foreach ($teacher as $item)
+                                <option value="{{ $item->id }}"
+                                    {{ old('teacher_id') == $item->id ? 'selected' : false }}>{{ $item->name }}</option>
+                            @endforeach
+                        @endif
                     </select>
                     @error('teacher_id')
                         <div class="invalid-feedback">
@@ -46,8 +51,8 @@
             <div class="col-6">
                 <div class="mb-3">
                     <label for="code">Mã khóa học</label>
-                    <input type="text" class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" id="code"
-                        name="code" placeholder="Mã khóa học..." value="{{ old('code') }}">
+                    <input type="text" class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}"
+                        id="code" name="code" placeholder="Mã khóa học..." value="{{ old('code') }}">
                     @error('code')
                         <div class="invalid-feedback">
                             {{ $message }}

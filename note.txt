@@ -224,8 +224,32 @@
 
 ## Thiết lập ràng buộc Teacher và courses
     -Ràng buộc khóa ngoại
+        => Nếu giảng viên bị xóa => Xóa các khóa học của giảng viên đó.
+        Lưu ý cài gói: composer doctrine/dbal
     -Ràng buộc hình ảnh
-
+        + 1 hình ảnh sử dụng nhiều nơi => Xóa 1 bản ghi => Xóa Ảnh
+        + Tạo 1 module Media (Database) => Khi chọn ảnh ở các module => Bật popup của module media
+    
+## Xây dựng Module Auth
+    -Cài gói composer require laravel/ui
+    -php artisan ui bootstrap --auth -> npm install -> npm run dev
+    
+## Hoàn thành các câu lệnh Artisan Console
+    
+    ### Tạo Module
+        -php artisan make:module TEN_MODULE
+    ### Tạo Controller
+        -php artisan module:make-controller TEN_CONTROLLER TEN_MODULE
+    ### Tạo Middleware
+        -php artisan module:make-middleware TEN_MIDDLEWARE TEN_MODULE
+    ### Tạo Request 
+        -php artisan module:make-request TEN_REQUEST TEN_MODULE
+    ### Tạo Model 
+        -php artisan module:make-model TEN_MODEL TEN_MODULE
+    ### Tạo Migration
+        -php artisan module:make-migration TEN_MIGRATION TEN_MODULE
+    ### Tạo Seeder
+        -php artisan module:make-seeder TEN_SEEDER TEN_MODULE
 
 
 

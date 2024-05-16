@@ -1,6 +1,6 @@
 /*!
- * Start Bootstrap - SB Admin v7.0.7 (https://startbootstrap.com/template/sb-admin)
- * Copyright 2013-2023 Start Bootstrap
+ * Start Bootstrap - SB Admin v7.0.5 (https://startbootstrap.com/template/sb-admin)
+ * Copyright 2013-2022 Start Bootstrap
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
  */
 //
@@ -8,6 +8,7 @@
 //
 
 window.addEventListener("DOMContentLoaded", (event) => {
+    // $(".select2").select2();
     // Toggle the side navigation
     const sidebarToggle = document.body.querySelector("#sidebarToggle");
     if (sidebarToggle) {
@@ -25,7 +26,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 
-    const tableList = document.querySelector("#dataTable");
+    const tableList = document.querySelector("#datatable");
     const deleteForm = document.querySelector(".delete-form");
     if (tableList) {
         tableList.addEventListener("click", (e) => {
@@ -33,7 +34,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 e.preventDefault();
                 Swal.fire({
                     title: "Bạn có chắc chắn?",
-                    text: "Bạn không thể khôi phục tài khoản sau khi xóa!",
+                    text: "Nếu xóa bạn không thể khôi phục!",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
@@ -41,11 +42,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
                     confirmButtonText: "Ok, Đồng ý xóa!",
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        Swal.fire({
-                            title: "Xóa thành công!",
-                            text: "Tài khoản đã được xóa.",
-                            icon: "success",
-                        });
                         const action = e.target.href;
                         deleteForm.action = action;
                         deleteForm.submit();
@@ -86,24 +82,39 @@ window.addEventListener("DOMContentLoaded", (event) => {
         return slug;
     };
 
-    const title = document.querySelector(".title");
     const slug = document.querySelector(".slug");
+    const title = document.querySelector(".title");
     let isChangeSlug = false;
 
-    if (slug.value === "") {
-        title.addEventListener("keyup", (e) => {
-            if (!isChangeSlug) {
+    if (slug) {
+        if (slug.value === "") {
+            title.addEventListener("keyup", (e) => {
+                if (!isChangeSlug) {
+                    const titleValue = e.target.value;
+                    slug.value = getSlug(titleValue);
+                }
+            });
+        }
+
+        slug.addEventListener("change", () => {
+            if (slug.value === "") {
+                const title = document.querySelector(".title");
                 const titleValue = title.value;
                 slug.value = getSlug(titleValue);
             }
+            isChangeSlug = true;
         });
     }
 
-    slug.addEventListener("change", (e) => {
-        if (slug.value === "") {
-            const titleValue = title.value;
-            slug.value = getSlug(titleValue);
-        }
-        isChangeSlug = true;
-    });
+    const logoutAction = document.querySelector(".logout-action");
+    const logoutForm = document.querySelector(".logout-form");
+
+    if (logoutAction && logoutForm) {
+        logoutAction.addEventListener("click", (e) => {
+            e.preventDefault();
+            const action = e.target.href;
+            logoutForm.action = action;
+            logoutForm.submit();
+        });
+    }
 });

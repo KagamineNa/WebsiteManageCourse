@@ -1,4 +1,4 @@
-@extends('layout.backend')
+@extends('layouts.backend')
 @section('content')
     <p><a href="{{ route('admin.courses.create') }}" class = "btn btn-primary">Thêm mới</a></p>
     @if (session('msgSuccess'))
@@ -10,10 +10,11 @@
     <table id="dataTable" class="table table-bordered">
         <thead>
             <tr>
-                <th>Tên</th>
-                <th>Giá</th>
+                <th>Tên khóa học</th>
+                <th>Giá bán khóa học</th>
                 <th>Trạng thái</th>
-                <th>Thời gian</th>
+                <th>Thời gian cập nhật</th>
+                <th>Danh sách bài giảng</th>
                 <th>Sửa</th>
                 <th>Xóa</th>
             </tr>
@@ -41,6 +42,9 @@
                     },
                     {
                         data: 'created_at'
+                    },
+                    {
+                        data: 'lessons'
                     },
                     {
                         data: "edit"

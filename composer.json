@@ -9,10 +9,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "doctrine/dbal": "^3.8",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "laravel/ui": "^4.5",
         "unisharp/laravel-filemanager": "^2.9",
         "yajra/laravel-datatables-oracle": "^10.11"
     },
@@ -36,6 +38,9 @@
         "classmap": [
             "database/seeders",
             "database/migrations"
+        ],
+        "files": [
+            "app/Helpers/functions.php"
         ]
     },
     "autoload-dev": {

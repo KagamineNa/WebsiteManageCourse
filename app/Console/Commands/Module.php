@@ -73,10 +73,18 @@ class Module extends Command
             if (!File::exists($routesFolder)) {
                 File::makeDirectory($routesFolder, 0755, true, true);
 
-                //Create routes.php
-                $routesFile = base_path('modules/' . $name . '/routes/routes.php');
-                if (!File::exists($routesFile)) {
-                    File::put($routesFile, "<?php\n\nuse Illuminate\Support\Facades\Route;\n\nRoute::middleware('demo')->get('{$name}', function () {\n    return config('config.tet');\n});\n\nRoute::group(['namespace' => 'Modules\\{$name}\\src\\Http\\Controllers'], function () {\n    Route::prefix('{$name}')->group(function () {\n        Route::get('/', '{$name}Controller@index');\n\n        Route::get('/detail/{id}', '{$name}Controller@detail');\n\n        Route::get('/create', '{$name}Controller@create');\n    });\n\n});\n");
+                //Create file web.php
+                $routesWebFile = base_path('modules/' . $name . '/routes/web.php');
+                //Create file api.php
+                $routesApiFile = base_path('modules/' . $name . '/routes/api.php');
+
+                $routeContent = File::get(app_path('Console/Commands/Templates/Route.txt'));
+                $routeContent = str_replace('{module}', strtolower($name), $routeContent);
+                if (!File::exists($routesWebFile)) {
+                    File::put($routesWebFile, $routeContent);
+                }
+                if (!File::exists($routesApiFile)) {
+                    File::put($routesApiFile, $routeContent);
                 }
             }
 

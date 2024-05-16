@@ -5,19 +5,23 @@ namespace Modules\Courses\src\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Modules\Courses\src\Http\Requests\CoursesRequest;
 use Modules\Courses\src\Repositories\CoursesRepositoryInterface;
+use Modules\Teacher\src\Repositories\TeacherRepositoryInterface;
+use Modules\Categories\src\Repositories\CategoriesRepositoryInterface;
 use Yajra\DataTables\Facades\DataTables;
 use Carbon\Carbon;
-use Modules\Categories\src\Repositories\CategoriesRepository;
+
 
 class CoursesController extends Controller
 {
     protected $coursesRepository;
     protected $categoriesRepository;
+    protected $teacherRepository;
 
-    public function __construct(CoursesRepositoryInterface $coursesRepository, CategoriesRepository $categoriesRepository)
+    public function __construct(CoursesRepositoryInterface $coursesRepository, CategoriesRepositoryInterface $categoriesRepository, TeacherRepositoryInterface $teacherRepository)
     {
         $this->coursesRepository = $coursesRepository;
         $this->categoriesRepository = $categoriesRepository;
+        $this->teacherRepository = $teacherRepository;
     }
     public function index()
     {
@@ -30,6 +34,9 @@ class CoursesController extends Controller
     {
         $courses = $this->coursesRepository->getAllCourses();
         return DataTables::of($courses)
+            ->addColumn('lessons', function ($course) {
+                return '<a href="' . route('admin.lessons.index', $course) . '" class="btn btn-primary btn-sm">Bài giảng</a>';
+            })
             ->addColumn('edit', function ($course) {
                 return '<a href="' . route('admin.courses.edit', $course->id) . '" class="btn btn-warning">Sửa</a>';
 
@@ -55,7 +62,7 @@ class CoursesController extends Controller
                 }
                 return $price;
             })
-            ->rawColumns(['edit', 'delete', 'status', 'price'])
+            ->rawColumns(['edit', 'delete', 'status', 'price', 'lessons'])
             ->toJson();
     }
 
@@ -64,7 +71,8 @@ class CoursesController extends Controller
         $pageTitle = "Thêm khóa học";
 
         $categories = $this->categoriesRepository->getAllCategories();
-        return view('courses::add', compact('pageTitle', 'categories'));
+        $teacher = $this->teacherRepository->getAllTeacher()->get();
+        return view('courses::add', compact('pageTitle', 'categories', 'teacher'));
     }
 
     public function store(CoursesRequest $request)
@@ -96,13 +104,13 @@ class CoursesController extends Controller
 
         $categories = $this->categoriesRepository->getAllCategories();
 
-        // $teacher = $this->teacherRepository->getAllTeacher()->get();
+        $teacher = $this->teacherRepository->getAllTeacher()->get();
 
         $pageTitle = "Cập nhật khóa học";
         if (!$course) {
             abort(404);
         }
-        return view('courses::edit', compact('pageTitle', 'course', 'categories', 'categoryIds'));
+        return view('courses::edit', compact('pageTitle', 'course', 'categories', 'categoryIds', 'teacher'));
     }
 
     public function update(CoursesRequest $coursesRequest, $id)
@@ -131,12 +139,12 @@ class CoursesController extends Controller
     public function delete($id)
     {
         $course = $this->coursesRepository->getCourse($id);
-        $this->coursesRepository->deleteCourseCategories($course);
+        // $this->coursesRepository->deleteCourseCategories($course); // Không cần nữa
         $status = $this->coursesRepository->deleteCourse($id);
 
-        // if ($status) {
-        //     deleteFileStorage($course->thumbnail);
-        // }
+        if ($status) {
+            deleteFileStorage($course->thumbnail);
+        }
         return back()->with('msgSuccess', 'Xóa khóa học thành công');
     }
 

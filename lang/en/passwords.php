@@ -12,11 +12,9 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
-
-    'reset' => 'Your password has been reset.',
-    'sent' => 'We have emailed your password reset link.',
-    'throttled' => 'Please wait before retrying.',
-    'token' => 'This password reset token is invalid.',
-    'user' => "We can't find a user with that email address.",
-
+    'reset' => 'Mật khẩu của bạn đã được đặt lại.',
+    'sent' => 'Chúng tôi đã gửi email chứa liên kết đặt lại mật khẩu của bạn.',
+    'throttled' => 'Vui lòng chờ trước khi thử lại.',
+    'token' => 'Mã token đặt lại mật khẩu này không hợp lệ.',
+    'user' => "Chúng tôi không thể tìm thấy người dùng với địa chỉ email này.",
 ];

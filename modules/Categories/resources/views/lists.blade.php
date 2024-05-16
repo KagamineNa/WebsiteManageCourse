@@ -1,4 +1,4 @@
-@extends('layout.backend')
+@extends('layouts.backend')
 @section('content')
     <p><a href="{{ route('admin.categories.create') }}" class = "btn btn-primary">Thêm mới</a></p>
     @if (session('msgSuccess'))
