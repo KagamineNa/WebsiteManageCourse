@@ -18,16 +18,7 @@
                 <th>Xóa</th>
             </tr>
         </thead>
-        <tfoot>
-            <tr>
-                <th>Tên</th>
-                <th>Email</th>
-                <th>Nhóm</th>
-                <th>Thời gian</th>
-                <th><a href="#" class = "btn btn-warning">Sửa</a></th>
-                <th><a href="#" class = "btn btn-danger">Xóa</a></th>
-            </tr>
-        </tfoot>
+
     </table>
     @include('parts.backend.delete')
 @endsection

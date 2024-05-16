@@ -15,12 +15,12 @@
 
 
 ## Dành cho quản trị
-    - Quản lý danh mục
+    - Quản lý chuyên mục
     - Quản lý học viên
     - Quản lý khóa học
     - Quản lý giảng viên
     - Quản lý bài giảng
-    - Quản lý danh mục tin tức
+    - Quản lý chuyên mục tin tức
     - Quản lý tin tức
     - Quản lý đơn hàng
     - Quản lý người dùng (Quản lý hệ thống)
@@ -36,7 +36,7 @@
 
 
 ## Phân tích Database
-1. Table categories => Quản lý danh mục:
+1. Table categories => Quản lý chuyên mục:
 	-id => int
 	-name => varchar(200)
 	-slug (đường dẫn tĩnh) => varchar(200)
@@ -76,7 +76,7 @@
     -created_at => timestamp
     -updated_at => timestamp
 
-4. Table categories_courses => Trung gian liên kết giữa danh mục và khóa học
+4. Table courses_categories => Trung gian liên kết giữa chuyên mục và khóa học
     -id => int
     -category_id => int
     -course_id => int
@@ -108,7 +108,7 @@
     -created_at => timestamp
     -updated_at => timestamp
 
-8. Tables categories_posts => Quản lý danh mục tin tức
+8. Tables categories_posts => Quản lý chuyên mục tin tức
     -id => int
 	-name => varchar(200)
 	-slug (đường dẫn tĩnh) => varchar(200)
@@ -218,8 +218,13 @@
     ### Viết chức năng thêm user
     ### Viết chức năng hiển thị user
 
+## Xây dựng Module quản lý Categories (Chuyên mục)
 
+## Xây dựng Module Quản lý Teacher (Giảng viên)
 
+## Thiết lập ràng buộc Teacher và courses
+    -Ràng buộc khóa ngoại
+    -Ràng buộc hình ảnh
 
 
 

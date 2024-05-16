@@ -5,6 +5,13 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\File;
 use Modules\User\src\Repositories\UserRepository;
 use Modules\User\src\Repositories\UserRepositoryInterface;
+use Modules\Categories\src\Repositories\CategoriesRepository;
+use Modules\Categories\src\Repositories\CategoriesRepositoryInterface;
+use Modules\Courses\src\Repositories\CoursesRepository;
+use Modules\Courses\src\Repositories\CoursesRepositoryInterface;
+use Modules\Teacher\src\Repositories\TeacherRepository;
+use Modules\Teacher\src\Repositories\TeacherRepositoryInterface;
+
 
 class ModuleServiceProvider extends ServiceProvider
 {
@@ -37,10 +44,18 @@ class ModuleServiceProvider extends ServiceProvider
         //Khai báo commands
         $this->commands($this->commands);
 
-        $this->app->singleton(
-            UserRepositoryInterface::class,
-            UserRepository::class
-        );
+
+        $repositories = [
+            UserRepositoryInterface::class => UserRepository::class,
+            CategoriesRepositoryInterface::class => CategoriesRepository::class,
+            CoursesRepositoryInterface::class => CoursesRepository::class,
+            TeacherRepositoryInterface::class => TeacherRepository::class,
+            // Thêm các cặp interface và class khác vào đây
+        ];
+
+        foreach ($repositories as $interface => $class) {
+            $this->app->singleton($interface, $class);
+        }
     }
 
     /**

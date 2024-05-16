@@ -174,6 +174,8 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
+        // UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+
     ])->toArray(),
 
     /*
@@ -189,6 +191,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        // 'Lfm' => UniSharp\LaravelFilemanager\Lfm::class,
     ])->toArray(),
 
 ];

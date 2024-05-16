@@ -40,8 +40,6 @@ class UserController extends Controller
             })
             ->rawColumns(['edit', 'delete'])
             ->toJson();
-
-
     }
 
     public function create()
