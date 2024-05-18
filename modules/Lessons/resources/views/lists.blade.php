@@ -20,17 +20,6 @@
                 <th>Xóa</th>
             </tr>
         </thead>
-        <tfoot>
-            <tr>
-                <th>Tên</th>
-                <th>Học thử</th>
-                <th>Lượt xem</th>
-                <th>Thời lượng</th>
-                <th>Thêm</th>
-                <th>Sửa</th>
-                <th>Xóa</th>
-            </tr>
-        </tfoot>
 
     </table>
     @include('parts.backend.delete')
@@ -39,7 +28,7 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            $("#datatable").DataTable({
+            $("#dataTable").DataTable({
                 processing: true,
                 serverSide: true,
                 pageLength: 2,

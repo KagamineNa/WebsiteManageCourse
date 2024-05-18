@@ -3,6 +3,8 @@ namespace Modules;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\File;
+use Modules\Document\src\Repositories\DocumentRepositoryInterface;
+use Modules\Document\src\Repositories\DocumentRepository;
 use Modules\User\src\Repositories\UserRepository;
 use Modules\User\src\Repositories\UserRepositoryInterface;
 use Modules\Categories\src\Repositories\CategoriesRepository;
@@ -15,7 +17,12 @@ use Modules\Home\src\Repositories\HomeRepository;
 use Modules\Home\src\Repositories\HomeRepositoryInterface;
 use Modules\Lessons\src\Repositories\LessonsRepository;
 use Modules\Lessons\src\Repositories\LessonsRepositoryInterface;
+use Modules\Video\src\Repositories\VideoRepository;
+use Modules\Video\src\Repositories\VideoRepositoryInterface;
+use Modules\Students\src\Repositories\StudentsRepository;
+use Modules\Students\src\Repositories\StudentsRepositoryInterface;
 use Illuminate\Support\Facades\Route;
+
 
 
 class ModuleServiceProvider extends ServiceProvider
@@ -57,6 +64,9 @@ class ModuleServiceProvider extends ServiceProvider
             TeacherRepositoryInterface::class => TeacherRepository::class,
             HomeRepositoryInterface::class => HomeRepository::class,
             LessonsRepositoryInterface::class => LessonsRepository::class,
+            VideoRepositoryInterface::class => VideoRepository::class,
+            DocumentRepositoryInterface::class => DocumentRepository::class,
+            StudentsRepositoryInterface::class => StudentsRepository::class,
             // Thêm các cặp interface và class khác vào đây
         ];
 

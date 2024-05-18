@@ -25,9 +25,15 @@
                 ])
 
                 @include('parts.backend.menu_item', [
+                    'title' => 'Học viên',
+                    'name' => 'students',
+                ])
+
+                @include('parts.backend.menu_item', [
                     'title' => 'Người dùng',
                     'name' => 'user',
                 ])
+
 
             </div>
         </div>

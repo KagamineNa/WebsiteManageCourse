@@ -8,7 +8,7 @@
 //
 
 window.addEventListener("DOMContentLoaded", (event) => {
-    // $(".select2").select2();
+    $(".select2").select2();
     // Toggle the side navigation
     const sidebarToggle = document.body.querySelector("#sidebarToggle");
     if (sidebarToggle) {
@@ -26,7 +26,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 
-    const tableList = document.querySelector("#datatable");
+    const tableList = document.querySelector("#dataTable");
     const deleteForm = document.querySelector(".delete-form");
     if (tableList) {
         tableList.addEventListener("click", (e) => {
