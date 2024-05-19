@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Modules\Categories\src\Models\Category;
 use Modules\Teacher\src\Models\Teacher;
 use Modules\Lessons\src\Models\Lesson;
+use App\Models\Scopes\ActiveScope;
 
 class Course extends Model
 {
@@ -25,6 +26,13 @@ class Course extends Model
         // Add more fields here as needed
     ];
 
+    protected $with = ['teacher'];
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new ActiveScope);
+    }
+
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'courses_categories');
@@ -40,5 +48,4 @@ class Course extends Model
         return $this->hasMany(Lesson::class, 'course_id', 'id');
     }
 
-    // Define any relationships or additional methods here
 }

@@ -4,6 +4,7 @@ namespace Modules\Courses\src\Repositories;
 use App\Repositories\BaseRepository;
 use Modules\Courses\src\Repositories\CoursesRepositoryInterface;
 use Modules\Courses\src\Models\Course;
+use App\Models\Scopes\ActiveScope;
 
 class CoursesRepository extends BaseRepository implements CoursesRepositoryInterface
 {
@@ -19,8 +20,7 @@ class CoursesRepository extends BaseRepository implements CoursesRepositoryInter
 
     public function getCourse($id)
     {
-        // return $this->model->withoutGlobalScope(ActiveScope::class)->find($id);
-        return $this->model->find($id);
+        return $this->model->withoutGlobalScope(ActiveScope::class)->find($id);
     }
 
     public function createCourseCategories($course, $data = [])
@@ -55,8 +55,7 @@ class CoursesRepository extends BaseRepository implements CoursesRepositoryInter
 
     public function deleteCourse($id)
     {
-        // return $this->model->withoutGlobalScope(ActiveScope::class)->where('id', $id)->delete();
-        return $this->model->where('id', $id)->delete();
+        return $this->model->withoutGlobalScope(ActiveScope::class)->where('id', $id)->delete();
     }
 
     public function updateCourse($id, $data = [])

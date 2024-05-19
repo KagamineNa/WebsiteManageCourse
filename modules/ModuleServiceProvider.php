@@ -22,6 +22,7 @@ use Modules\Video\src\Repositories\VideoRepositoryInterface;
 use Modules\Students\src\Repositories\StudentsRepository;
 use Modules\Students\src\Repositories\StudentsRepositoryInterface;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Pagination\Paginator;
 
 
 
@@ -88,6 +89,8 @@ class ModuleServiceProvider extends ServiceProvider
                 $this->registerModule($directory);
             }
         }
+
+        Paginator::useBootstrapFive();
     }
 
     private function getModule()

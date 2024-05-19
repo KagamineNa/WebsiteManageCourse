@@ -65,6 +65,6 @@
         <span>
             <i class="fa-solid fa-heart"></i>
         </span>
-        by Chí Ngọc
+        by Thu Ngân
     </p>
 </footer>

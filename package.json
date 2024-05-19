@@ -12,5 +12,9 @@
         "laravel-vite-plugin": "^1.0.0",
         "sass": "^1.56.1",
         "vite": "^5.0.0"
+    },
+    "dependencies": {
+        "moment": "^2.30.1",
+        "video.js": "^8.12.0"
     }
 }

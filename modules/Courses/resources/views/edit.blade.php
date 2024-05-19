@@ -1,8 +1,8 @@
 @extends('layouts.backend')
 @section('content')
-    @if (session('msgSuccess'))
+    @if (session('msg'))
         <div class="alert alert-success">
-            {{ session('msgSuccess') }}
+            {{ session('msg') }}
         </div>
     @endif
     <form action="" method="post">
