@@ -1,5 +1,6 @@
 <?php
 use Modules\User\src\Models\User;
+use Modules\Students\src\Models\Student;
 
 return [
 
@@ -41,6 +42,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'students' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
     ],
 
     /*
@@ -64,6 +69,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => User::class,
+        ],
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => Student::class,
         ],
 
         // 'users' => [

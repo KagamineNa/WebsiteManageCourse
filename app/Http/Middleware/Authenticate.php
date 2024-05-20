@@ -17,7 +17,7 @@ class Authenticate extends Middleware
             throw new AuthenticationException(
                 'Unauthenticated.',
                 $guards,
-                $this->redirectTo($request)
+                $this->redirectTo($request, !in_array('students', $guards))
             );
         }
     }

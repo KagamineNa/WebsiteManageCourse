@@ -23,6 +23,7 @@ use Modules\Students\src\Repositories\StudentsRepository;
 use Modules\Students\src\Repositories\StudentsRepositoryInterface;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Pagination\Paginator;
+use Modules\Auth\src\Http\Middlewares\BlockUserMiddleware;
 
 
 
@@ -35,6 +36,7 @@ class ModuleServiceProvider extends ServiceProvider
      */
     private $middlewares = [
         // 'demo' => DemoMiddleware::class
+        'user.block' => BlockUserMiddleware::class
     ];
 
     private $commands = [
@@ -91,6 +93,11 @@ class ModuleServiceProvider extends ServiceProvider
         }
 
         Paginator::useBootstrapFive();
+
+        $request = request();
+        if ($request->is('admin') || $request->is('admin/*')) {
+            $this->app['router']->pushMiddlewareToGroup('web', 'auth');
+        }
     }
 
     private function getModule()
