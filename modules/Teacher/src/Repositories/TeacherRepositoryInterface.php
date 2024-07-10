@@ -8,4 +8,5 @@ interface TeacherRepositoryInterface extends RepositoryInterface
 {
     public function getModel();
     public function getAllTeacher();
+    public function getTeachers();
 }

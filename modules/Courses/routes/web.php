@@ -23,4 +23,10 @@ Route::group(['as' => 'courses.'], function () {
         Route::get('/stream', 'Clients\CoursesController@streamVideo')->name('stream');
 
     });
+
+
+    Route::get('/khoa-hoc/{id}/checkout', 'Clients\CoursesController@naCheckout')->name('checkout');
+    Route::get('/khoa-hoc/{id}/checkout-success', 'Clients\CoursesController@naCheckoutSuccess')->name('checkout-success');
+    Route::post('/khoa-hoc/{id}/checkout-complete', 'Clients\CoursesController@naCheckoutComplete')->name('checkout-complete');
+
 });

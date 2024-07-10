@@ -11,7 +11,7 @@ class BlockController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        if ($user->status) {
+        if ($user->status == 1) {
             return redirect()->route('home');
         }
         $pageTitle = 'Tài khoản đã bị khóa';

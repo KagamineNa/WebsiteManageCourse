@@ -27,4 +27,8 @@ interface CoursesRepositoryInterface extends RepositoryInterface
     public function deleteCourse($id);
 
     public function deleteCourseCategories($course);
+
+    public function findMany($ids);
+
+
 }

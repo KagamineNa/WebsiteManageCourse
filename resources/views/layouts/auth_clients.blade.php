@@ -11,7 +11,11 @@
 </head>
 
 <body>
-    @yield('content')
+    @include ('parts.clients.header')
+    <main>
+        @yield('content')
+    </main>
+    @include ('parts.clients.footer')
 </body>
 
 @vite(['resources/js/app.js'])

@@ -15,7 +15,7 @@ class CoursesRepository extends BaseRepository implements CoursesRepositoryInter
 
     public function getAllCourses()
     {
-        return $this->model->select('id', 'name', 'price', 'sale_price', 'status', 'created_at')->latest();
+        return $this->model->withoutGlobalScope(ActiveScope::class)->select(['id', 'name', 'price', 'status', 'sale_price', 'created_at'])->latest();
     }
 
     public function getCourse($id)
@@ -66,4 +66,11 @@ class CoursesRepository extends BaseRepository implements CoursesRepositoryInter
         }
         return false;
     }
+
+    public function findMany($ids)
+    {
+        return $this->model->findMany($ids);
+    }
+
+
 }

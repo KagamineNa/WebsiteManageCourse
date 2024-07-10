@@ -17,3 +17,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
       Route::delete('delete/{student}', 'StudentController@delete')->name('delete');
    });
 });
+
+
+Route::group(['as' => 'student.'], function () {
+   Route::group(['prefix' => 'tai-khoan', 'as' => 'account.', 'middleware' => ['auth:students']], function () {
+      Route::get('/', 'Clients\AccountController@index')->name('index');
+      Route::get('thong-tin', 'Clients\AccountController@profile')->name('profile');
+      Route::post('thong-tin', 'Clients\AccountController@updateProfile')->name('updateProfile');
+      Route::get('khoa-hoc', 'Clients\AccountController@myCourses')->name('myCourses');
+      Route::get('don-hang', 'Clients\AccountController@myOrders')->name('myOrders');
+      Route::get('doi-mat-khau', 'Clients\AccountController@changePassword')->name('changePassword');
+      Route::post('doi-mat-khau', 'Clients\AccountController@updatePassword');
+   });
+});

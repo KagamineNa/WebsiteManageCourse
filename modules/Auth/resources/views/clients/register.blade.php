@@ -1,16 +1,9 @@
 @extends('layouts.auth_clients')
 @section('content')
-    <div class="container">
-        <div class="home-back">
-            <a href="{{ route('home') }}">
-                <span>
-                    <i class="fa-solid fa-arrow-left"></i>
-                </span>
-                Về trang chủ
-            </a>
-        </div>
+    <div class="container" style="padding: 30px 0;">
+
         <div class="sign-up">
-            <h3>Đăng kí</h3>
+            <h3>Đăng ký</h3>
             @if (session('msg'))
                 <div class="alert alert-danger">{{ session('msg') }}</div>
             @endif
@@ -35,9 +28,12 @@
                 @error('confirm_password')
                     <span class="text-start text-danger mb-3">{{ $message }}</span>
                 @enderror
-                <button type="submit">
+                <button type="submit"
+                    style="background: linear-gradient(to right bottom, #031b88, #6096fd);
+                background-size: 100%;
+                background-repeat: no-repeat;">
                     <i class="fa-solid fa-user"></i>
-                    Đăng kí
+                    Đăng ký
                 </button>
                 @csrf
             </form>

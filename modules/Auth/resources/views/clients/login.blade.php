@@ -1,18 +1,18 @@
 @extends('layouts.auth_clients')
 @section('content')
-    <div class="container">
-        <div class="home-back">
+    <div class="container" style="padding: 30px 0;">
+        {{-- <div class="home-back">
             <a href="{{ route('home') }}">
                 <span>
                     <i class="fa-solid fa-arrow-left"></i>
                 </span>
                 Về trang chủ
             </a>
-        </div>
+        </div> --}}
         <div class="sign-in">
             <h3>Đăng nhập</h3>
             @if (session('msg'))
-                <div class="alert alert-danger">{{ session('msg') }}</div>
+                <div class="alert alert-primary">{{ session('msg') }}</div>
             @endif
             <form action="" method="post">
                 <input type="text" name="email" placeholder="Email/Username" />
@@ -27,8 +27,14 @@
                     <input type="checkbox" name="remember" value="1" />
                     <span>Tự động đăng nhập</span>
                 </div>
-                <p class="forgot-password">Quên mật khẩu đăng nhập</p>
-                <button type="submit">Đăng nhập</button>
+                <p class="forgot-password">
+                    <a href="{{ route('clients.password.forgot') }}">Quên mật khẩu đăng nhập</a>
+                </p>
+                <button type="submit"
+                    style="background: linear-gradient(to right bottom, #031b88, #6096fd);
+                background-size: 100%;
+                background-repeat: no-repeat;">Đăng
+                    nhập</button>
                 @csrf
             </form>
             <p class="sign-up">

@@ -57,7 +57,8 @@ function getSize($size, $type = 'KB')
 
 function queryActive($query)
 {
-    return $query->where('status', 1);
+    $tableName = $query->getModel()->getTable();
+    return $query->where($tableName . '.status', 1);
 }
 
 function queryPosition($query)

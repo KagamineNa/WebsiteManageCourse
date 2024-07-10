@@ -21,6 +21,8 @@ use Modules\Video\src\Repositories\VideoRepository;
 use Modules\Video\src\Repositories\VideoRepositoryInterface;
 use Modules\Students\src\Repositories\StudentsRepository;
 use Modules\Students\src\Repositories\StudentsRepositoryInterface;
+use Modules\Orders\src\Repositories\OrdersRepository;
+use Modules\Orders\src\Repositories\OrdersRepositoryInterface;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Pagination\Paginator;
 use Modules\Auth\src\Http\Middlewares\BlockUserMiddleware;
@@ -70,6 +72,7 @@ class ModuleServiceProvider extends ServiceProvider
             VideoRepositoryInterface::class => VideoRepository::class,
             DocumentRepositoryInterface::class => DocumentRepository::class,
             StudentsRepositoryInterface::class => StudentsRepository::class,
+            OrdersRepositoryInterface::class => OrdersRepository::class,
             // Thêm các cặp interface và class khác vào đây
         ];
 

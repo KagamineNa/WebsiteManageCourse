@@ -5,18 +5,21 @@
                 <div class="d-none d-lg-block col-lg-2">
                     <form>
                         <input type="text" placeholder="Bạn tìm gì" />
-                        <button type="submit" class="btn btn-primary">Tìm</button>
+                        <button type="submit" class="btn btn-primary"
+                            style="background: linear-gradient(to right bottom, #031b88, #6096fd);
+                        background-size: 100%;
+                        background-repeat: no-repeat;">Tìm</button>
                     </form>
                 </div>
                 <div class="d-none d-lg-block col-lg-7">
                     <div class="d-flex">
                         <p class="slogan">
                             <i class="fas fa-phone"></i>Tư vấn & hỗ trợ:
-                            <a href="#">0989341634</a>
+                            <a href="#">0888716903</a>
                         </p>
                         <p class="mail">
                             <i class="far fa-envelope"></i>
-                            <a href="#">ngocnguyenchi1507@gmail.com</a>
+                            <a href="#">thungan16092003@gmail.com</a>
                         </p>
                     </div>
                 </div>
@@ -25,16 +28,22 @@
                         @if (auth('students')->check())
                             <ul class="d-flex gap-2">
                                 <li>Chào bạn, {{ auth('students')->user()->name }}</li>
-                                <li><a href="#">Tài khoản</a></li>
+                                <li><a href="{{ route('student.account.index') }}">Tài khoản</a></li>
                                 <li><a href="#" onclick="document['form-logout'].submit(); return false;">Đăng
                                         xuất</a></li>
 
                             </ul>
                         @else
-                            <a href="{{ route('clients.register') }}" class="btn btn-primary text-white">
+                            <a href="{{ route('clients.register') }}" class="btn btn-primary text-white"
+                                style="background: linear-gradient(to right bottom, #031b88, #6096fd);
+                            background-size: 100%;
+                            background-repeat: no-repeat;">
                                 <i class="fas fa-user"></i> Đăng ký
                             </a>
-                            <a href="{{ route('clients.login') }}" class="btn btn-primary text-white">
+                            <a href="{{ route('clients.login') }}" class="btn btn-primary text-white"
+                                style="background: linear-gradient(to right bottom, #031b88, #6096fd);
+                            background-size: 100%;
+                            background-repeat: no-repeat;">
                                 <i class="fas fa-key"></i> Đăng nhập
                             </a>
                         @endif
@@ -46,7 +55,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <img src="{{ asset('clients/assets/logo.png') }}" alt="" />
+                <img src="{{ asset('clients/assets/newlogo3.png') }}" alt="" style="height:90px; width:120px" />
             </a>
             <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -56,13 +65,13 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{route('home')}}">
+                        <a class="nav-link active" aria-current="page" href="{{ route('home') }}">
                             <i class="fas fa-home"></i>
                             Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('courses.index')}}">
+                        <a class="nav-link" href="{{ route('courses.index') }}">
                             <i class="fas fa-tv"></i>
                             Khóa học
                         </a>

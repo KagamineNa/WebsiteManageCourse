@@ -19,6 +19,13 @@ class Authenticate extends Middleware
                 $guards,
                 $this->redirectTo($request, !in_array('students', $guards))
             );
+        } else {
+            // Xử lý cho các trường hợp không phải admin
+            throw new AuthenticationException(
+                'Unauthenticated.',
+                $guards,
+                $this->redirectTo($request, false) // Giả sử mọi trường hợp khác không phải là admin
+            );
         }
     }
 

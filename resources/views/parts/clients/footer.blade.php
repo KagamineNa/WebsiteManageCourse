@@ -8,19 +8,19 @@
                         <li>
                             <a href="#">
                                 <i class="fa-solid fa-mobile"></i>
-                                0989341634
+                                0888716903
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <i class="fa-solid fa-envelope"></i>
-                                ngocnguyenchi1507@gmail.com
+                                thungan16092003@gmail.com
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <i class="fa-solid fa-house"></i>
-                                9c9, Trần Quốc Hoàn, Cầu Giấy, Hà Nội
+                                Mỗ Lao, Hà Đông, Hà Nội
                             </a>
                         </li>
                     </ul>
@@ -60,11 +60,4 @@
             </div>
         </div>
     </div>
-    <p>
-        Made with
-        <span>
-            <i class="fa-solid fa-heart"></i>
-        </span>
-        by Thu Ngân
-    </p>
 </footer>

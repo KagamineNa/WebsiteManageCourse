@@ -44,9 +44,12 @@
 }
 .all-course .banner-course {
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .all-course .banner-course img {
-    width: 50%;
+    width: 80%;
 }
 .all-course .descreption-course {
     padding: 20px;
